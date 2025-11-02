@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masader</title>
+    <link rel="icon" type="image/x-icon" href="./assets/media/favicon.png">
+    <!-- <link rel="stylesheet" href="./assets/vendor/bootstrap-5.3.3/css/bootstrap.rtl.min.css"> -->
+    <link rel="stylesheet" href="./assets/vendor/bootstrap-5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./assets/vendor/slick/slick.css">
+    <link rel="stylesheet" href="./assets/vendor/aos/aos.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <link rel="stylesheet" href="./assets/css/rtl.css"> -->
+</head>
+
+<body class="homepage" data-theme="dark">
+    <!-- <button onclick="toggleDarkMode()">Toggle Dark Mode</button> -->
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./assets/media/logo.png" alt="masader_logo">
+            </a>
+            <button class="navbar-toggler ms-auto px-0" data-bs-toggle="offcanvas" href="#menuOffcanvas" role="button"
+                aria-controls="offcanvasExample">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!--Destop View-->
+                <ul class="navbar-nav d-lg-flex d-none me-auto mx-auto gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./about.html"> About </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Our
+                            Courses <i class="fas fa-angle-down opacity-50"></i></a>
+                        <div class="dropdown-menu dropdown-menu-lg rounded-4 p-0">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="d-flex flex-column p-3 block-bg rounded-4">
+                                        <a class="dropdown-item d-flex align-items-start" href="#">
+                                            <span class="icon"><img width="20" height="20" class="object-fit-contain"
+                                                    src="./assets/media/--icons/book-closed.svg" alt="book-closed"
+                                                    loading="lazy" style="min-width: 20px;"></span>
+                                            <div class="ms-2">
+                                                <h6>Course Name</h6>
+                                                <span class="text-color-1 fs-regular">The latest industry new and guides
+                                                    curated by
+                                                    our expert team.</span>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item d-flex align-items-start" href="#">
+                                            <span class="icon"><img width="20" height="20" class="object-fit-contain"
+                                                    src="./assets/media/--icons/stars-02.svg" alt="stars-02"
+                                                    loading="lazy" style="min-width: 20px;"></span>
+                                            <div class="ms-2">
+                                                <h6>Course Name</h6>
+                                                <span class="text-color-1 fs-regular">Learn how our customers are using
+                                                    Untitled UI to 10x their growth.</span>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item d-flex align-items-start" href="#">
+                                            <span class="icon"><img width="20" height="20" class="object-fit-contain"
+                                                    src="./assets/media/--icons/play-circle.svg" alt="play-circle"
+                                                    loading="lazy" style="min-width: 20px;"></span>
+                                            <div class="ms-2">
+                                                <h6>Course Name</h6>
+                                                <span class="text-color-1 fs-regular">Get up and running on our newest
+                                                    features and in-depth guides.</span>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item d-flex align-items-start" href="#">
+                                            <span class="icon"><img width="20" height="20" class="object-fit-contain"
+                                                    src="./assets/media/--icons/file-code-01.svg" alt="file-code-01"
+                                                    loading="lazy" style="min-width: 20px;"></span>
+                                            <div class="ms-2">
+                                                <h6>Course Name</h6>
+                                                <span class="text-color-1 fs-regular">In-depth articles on our tools and
+                                                    technologies to empower teams.</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="py-3 pe-3">
+                                        <h5>Our Courses</h5>
+                                        <p class="text-color-1">Jump right in—get an overview of the basics and get
+                                            started on building straight away.</p>
+
+                                        <img src="./assets/media/player-16_9.png" alt="video thumbnail"
+                                            class="w-100 rounded-4">
+
+                                        <a href="#" class="d-flex gap-1">
+                                            <img width="20" height="20" class="object-fit-contain"
+                                                src="./assets/media/--icons/play-circle.svg" loading="lazy"
+                                                style="min-width: 20px;"> <span class="text-color-2">Watch video</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Our Instructors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./blog.html">Blogs & News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+                <!--End-->
+                <div class="d-flex align-items-center justify-content-end gap-3">
+                    <a href="#"><img src="./assets/media/--flags/EG.svg" alt="arabic" loading="lazy"></a>
+                    <a href="#" class="btn btn-primary-color px-3 fs-medium">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--End Navbar-->
+
+    <!--Mobile View-->
+    <div class="offcanvas offcanvas-start offcanvas-size-sm" tabindex="-1" id="menuOffcanvas"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header justify-content-end pb-0">
+            <button class="btn close-btn" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="15" height="15">
+                    <path
+                        d="M 39.486328 6.9785156 A 1.50015 1.50015 0 0 0 38.439453 7.4394531 L 24 21.878906 L 9.5605469 7.4394531 A 1.50015 1.50015 0 0 0 8.484375 6.984375 A 1.50015 1.50015 0 0 0 7.4394531 9.5605469 L 21.878906 24 L 7.4394531 38.439453 A 1.50015 1.50015 0 1 0 9.5605469 40.560547 L 24 26.121094 L 38.439453 40.560547 A 1.50015 1.50015 0 1 0 40.560547 38.439453 L 26.121094 24 L 40.560547 9.5605469 A 1.50015 1.50015 0 0 0 39.486328 6.9785156 z"
+                        stroke="currentColor"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="./about.html"> About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./blog.html"> Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./contact.html"> Contact</a>
+                </li>
+
+                <li class="nav-item"><a href="#" class="btn btn-primary-color px-5 mt-5">Get Started</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--End-->
+
+    <div class="hero">
+        <div class="container">
+            <div class="text-center">
+                <div class="col-lg-9 mx-auto">
+
+                    <div class="d-flex flex-column gap-4">
+                        <div>
+                            <h2 class="h1 text-white text-uppercase mb-3" data-aos="fade-down" data-aos-duration="1500"
+                                data-aos-delay="150">DIGITAL INCOME IS A SKILL </h2>
+                            <p data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                                We will teach you how to earn with it</p>
+                        </div>
+
+                        <video class="w-100 h-100 rounded-4" id="player" poster="./assets/media/video-player16_9.png"
+                            playsinline controls style="aspect-ratio: 16/9;">
+                            <source src="your-video.mp4" type="video/mp4" />
+                        </video>
+
+                        <p data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                            We will teach you how to earn with it</p>
+
+                        <div class="d-flex flex-column gap-3">
+                            <div>
+                                <a href="#" class="btn btn-md btn-primary-color text-uppercase px-5">JOIN THE KEY
+                                    EDU</a>
+                            </div>
+                            <div class="d-flex gap-2 justify-content-center">
+                                <div class="avatar-group d-flex">
+                                    <img width="24" height="24" class="object-fit-cover rounded-circle"
+                                        src="./assets/media/--avatars/Avatar-1.png" alt="avatar 1" loading="lazy">
+                                    <img width="24" height="24" class="object-fit-cover rounded-circle"
+                                        src="./assets/media/--avatars/Avatar-2.png" alt="avatar 2" loading="lazy">
+                                    <img width="24" height="24" class="object-fit-cover rounded-circle"
+                                        src="./assets/media/--avatars/Avatar-3.png" alt="avatar 3" loading="lazy">
+                                    <img width="24" height="24" class="object-fit-cover rounded-circle"
+                                        src="./assets/media/--avatars/Avatar-4.png" alt="avatar 4" loading="lazy">
+                                </div>
+                                <span class="text-white">Join +113,000 Students</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--End Hero-->
+
+    <div class="block py-100">
+        <div class="container">
+            <div class="mb-100 text-center">
+                <span class="icon icon-56 icon-primary-color rounded-circle" data-aos="fade-down"
+                    data-aos-duration="1500"><img src="./assets/media/--icons/zap-fast.svg" alt="zap-fast"
+                        loading="lazy"></span>
+                <h2 class="section-title my-4" data-aos="fade-up" data-aos-duration="1500">See how fast we’re growing
+                </h2>
+                <p class="fs-medium" data-aos="fade-up" data-aos-duration="1500">Real-time stats on courses, students,
+                    traders, and instructors.</p>
+            </div>
+            <div class="row row-gap-4 mb-100 counter-container">
+                <div class="col-lg-3">
+                    <div class="counter-box text-center" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <span class="counter-value fw-bd">400</span><span class="counter-suffix">+</span>
+                        </div>
+                        <span class="counter-label text-color fs-medium">Courses</span>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="counter-box text-center" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <span class="counter-value fw-bd">500</span><span class="counter-suffix">+</span>
+                        </div>
+                        <span class="counter-label text-color fs-medium">Students</span>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="counter-box text-center" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <span class="counter-value fw-bd">21</span><span class="counter-suffix">K+</span>
+                        </div>
+                        <span class="counter-label text-color fs-medium">Traders</span>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="counter-box text-center" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <span class="counter-value fw-bd">10</span><span class="counter-suffix">K+</span>
+                        </div>
+                        <span class="counter-label text-color fs-medium">Instructors</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="#" class="btn btn-md btn-primary-color text-uppercase px-5">Get Started</a>
+            </div>
+        </div>
+    </div>
+    <!--End-->
+
+    <div class="block block-bg py-100">
+        <div class="container">
+            <div class="mb-100 text-center col-lg-9 mx-auto">
+                <span class="text-primary-color d-block mb-3 text-uppercase" data-aos="fade-down"
+                    data-aos-duration="1500">Features</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-duration="1500">Powerful features to
+                    create a flexible learning experience that works for you</h2>
+                <p class="fs-medium" data-aos="fade-up" data-aos-duration="1500">We offer a variety of
+                    specialized courses in the stock market and cryptocurrencies.</p>
+            </div>
+            <div class="timeline-section">
+                <div class="timeline-line">
+                    <div class="timeline-progress"></div>
+                </div>
+
+                <div class="d-flex flex-column row-gap-5">
+                    <div class="timeline-item">
+                        <div class="timeline-circle"></div>
+                        <div class="timeline-content">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img src="./assets/media/--features/feature-1.png" alt="feature 1">
+                                </div>
+
+                                <div class="col-lg-4 offset-lg-2">
+                                    <div class="icon icon-56 icon-light rounded-circle mb-4">
+                                        <img src="./assets/media/--icons/book-open-01.svg" alt="book-open-01"
+                                            loading="lazy">
+                                    </div>
+                                    <h3>Tailored Education</h3>
+                                    <p class="mb-4">Customized learning paths that provide you with in-demand skills.
+                                    </p>
+                                    <div class="d-flex flex-column gap-3">
+                                        <div class="d-flex gap-2">
+                                            <span class="text-primary-color">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_20521_1377)">
+                                                        <path
+                                                            d="M8.74998 13.9999L12.25 17.4999L19.25 10.4999M25.6666 13.9999C25.6666 20.4432 20.4433 25.6666 14 25.6666C7.55666 25.6666 2.33331 20.4432 2.33331 13.9999C2.33331 7.5566 7.55666 2.33325 14 2.33325C20.4433 2.33325 25.6666 7.5566 25.6666 13.9999Z"
+                                                            stroke="currentColor" stroke-width="2.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_20521_1377">
+                                                            <path
+                                                                d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
+                                                                fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <span>Get real time feedback and track your progress from our experts</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <span class="text-primary-color">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_20521_1377)">
+                                                        <path
+                                                            d="M8.74998 13.9999L12.25 17.4999L19.25 10.4999M25.6666 13.9999C25.6666 20.4432 20.4433 25.6666 14 25.6666C7.55666 25.6666 2.33331 20.4432 2.33331 13.9999C2.33331 7.5566 7.55666 2.33325 14 2.33325C20.4433 2.33325 25.6666 7.5566 25.6666 13.9999Z"
+                                                            stroke="currentColor" stroke-width="2.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_20521_1377">
+                                                            <path
+                                                                d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
+                                                                fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <span>Get real time feedback and track your progress from our experts</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <span class="text-primary-color">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_20521_1377)">
+                                                        <path
+                                                            d="M8.74998 13.9999L12.25 17.4999L19.25 10.4999M25.6666 13.9999C25.6666 20.4432 20.4433 25.6666 14 25.6666C7.55666 25.6666 2.33331 20.4432 2.33331 13.9999C2.33331 7.5566 7.55666 2.33325 14 2.33325C20.4433 2.33325 25.6666 7.5566 25.6666 13.9999Z"
+                                                            stroke="currentColor" stroke-width="2.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_20521_1377">
+                                                            <path
+                                                                d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
+                                                                fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <span>Get real time feedback and track your progress from our experts</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-circle"></div>
+                        <div class="timeline-content">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img src="./assets/media/--features/feature-2.png" alt="feature 1">
+                                </div>
+
+                                <div class="col-lg-4 offset-lg-2">
+                                    <div class="icon icon-56 icon-light rounded-circle mb-4">
+                                        <img src="./assets/media/--icons/message-chat-square.svg"
+                                            alt="message-chat-square" loading="lazy">
+                                    </div>
+                                    <h3>Interactive community</h3>
+                                    <p class="mb-4">supportive learning environment & engagement.
+                                    </p>
+                                    <div class="d-flex flex-column gap-3">
+                                        <div class="d-flex gap-2">
+                                            <span class="text-primary-color">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_20521_1377)">
+                                                        <path
+                                                            d="M8.74998 13.9999L12.25 17.4999L19.25 10.4999M25.6666 13.9999C25.6666 20.4432 20.4433 25.6666 14 25.6666C7.55666 25.6666 2.33331 20.4432 2.33331 13.9999C2.33331 7.5566 7.55666 2.33325 14 2.33325C20.4433 2.33325 25.6666 7.5566 25.6666 13.9999Z"
+                                                            stroke="currentColor" stroke-width="2.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_20521_1377">
+                                                            <path
+                                                                d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
+                                                                fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <span>Connect with like minded individuals & industry professionals</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <span class="text-primary-color">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_20521_1377)">
+                                                        <path
+                                                            d="M8.74998 13.9999L12.25 17.4999L19.25 10.4999M25.6666 13.9999C25.6666 20.4432 20.4433 25.6666 14 25.6666C7.55666 25.6666 2.33331 20.4432 2.33331 13.9999C2.33331 7.5566 7.55666 2.33325 14 2.33325C20.4433 2.33325 25.6666 7.5566 25.6666 13.9999Z"
+                                                            stroke="currentColor" stroke-width="2.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_20521_1377">
+                                                            <path
+                                                                d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
+                                                                fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <span>Peer support and motivation</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-circle"></div>
+                        <div class="timeline-content">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img src="./assets/media/--features/feature-3.png" alt="feature 1">
+                                </div>
+
+                                <div class="col-lg-4 offset-lg-2">
+                                    <div class="icon icon-56 icon-light rounded-circle mb-4">
+                                        <img src="./assets/media/--icons/message-chat-square.svg"
+                                            alt="message-chat-square" loading="lazy">
+                                    </div>
+                                    <h3>Expert guidance</h3>
+                                    <p class="mb-4">Our experts provide you with guidance and insights.
+                                    </p>
+                                    <div class="d-flex flex-column gap-3">
+                                        <div class="d-flex gap-2">
+                                            <span class="text-primary-color">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_20521_1377)">
+                                                        <path
+                                                            d="M8.74998 13.9999L12.25 17.4999L19.25 10.4999M25.6666 13.9999C25.6666 20.4432 20.4433 25.6666 14 25.6666C7.55666 25.6666 2.33331 20.4432 2.33331 13.9999C2.33331 7.5566 7.55666 2.33325 14 2.33325C20.4433 2.33325 25.6666 7.5566 25.6666 13.9999Z"
+                                                            stroke="currentColor" stroke-width="2.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_20521_1377">
+                                                            <path
+                                                                d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
+                                                                fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <span>Clear steps to master complex skills</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <span class="text-primary-color">
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_20521_1377)">
+                                                        <path
+                                                            d="M8.74998 13.9999L12.25 17.4999L19.25 10.4999M25.6666 13.9999C25.6666 20.4432 20.4433 25.6666 14 25.6666C7.55666 25.6666 2.33331 20.4432 2.33331 13.9999C2.33331 7.5566 7.55666 2.33325 14 2.33325C20.4433 2.33325 25.6666 7.5566 25.6666 13.9999Z"
+                                                            stroke="currentColor" stroke-width="2.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_20521_1377">
+                                                            <path
+                                                                d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
+                                                                fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                            <span>Stay informed about industry trends, emerging skills & best
+                                                practices</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-md btn-primary-color text-uppercase px-5">JOIN NOW</a>
+            </div>
+        </div>
+    </div>
+    <!--End-->
+
+    <div class="block py-100"></div>
+
+    <div class="position-fixed bottom-0 end-0 m-5 z-3">
+        <a href="#" class="pulse">
+            <?xml version="1.0" encoding="iso-8859-1"?>
+            <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            <svg height="50" width="50" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 58 58" xml:space="preserve">
+                <g>
+                    <path style="fill:#2CB742;" d="M0,58l4.988-14.963C2.457,38.78,1,33.812,1,28.5C1,12.76,13.76,0,29.5,0S58,12.76,58,28.5
+        		S45.24,57,29.5,57c-4.789,0-9.299-1.187-13.26-3.273L0,58z" />
+                    <path style="fill:#FFFFFF;" d="M47.683,37.985c-1.316-2.487-6.169-5.331-6.169-5.331c-1.098-0.626-2.423-0.696-3.049,0.42
+        		c0,0-1.577,1.891-1.978,2.163c-1.832,1.241-3.529,1.193-5.242-0.52l-3.981-3.981l-3.981-3.981c-1.713-1.713-1.761-3.41-0.52-5.242
+        		c0.272-0.401,2.163-1.978,2.163-1.978c1.116-0.627,1.046-1.951,0.42-3.049c0,0-2.844-4.853-5.331-6.169
+        		c-1.058-0.56-2.357-0.364-3.203,0.482l-1.758,1.758c-5.577,5.577-2.831,11.873,2.746,17.45l5.097,5.097l5.097,5.097
+        		c5.577,5.577,11.873,8.323,17.45,2.746l1.758-1.758C48.048,40.341,48.243,39.042,47.683,37.985z" />
+                </g>
+            </svg>
+        </a>
+    </div>
+    <!--End-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+    <script src="./assets/vendor/bootstrap-5.3.3/js/bootstrap.bundle.min.js" defer></script>
+    <script src="./assets/vendor/slick/slick.min.js" defer></script>
+    <script src="./assets/vendor/aos/aos.js" defer></script>
+    <script src="./assets/vendor/jquery-match-height-master/jquery.matchHeight-min.js" defer></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+    <!-- Latest Waypoints (compatible with jQuery 3+) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" defer></script>
+
+    <!-- CounterUp (newer version compatible with Waypoints 4.x) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" defer></script>
+    <script src="./assets/js/scripts.js" defer></script>
+
+    <script>
+        const player = new Plyr('#player', {
+            controls: [
+                'play-large',
+                'play',
+                'progress',
+                'current-time',
+                'duration',
+                'mute',
+                'volume',
+                'settings',
+                'fullscreen'
+            ]
+        });
+    </script>
+</body>
+
+</html>
