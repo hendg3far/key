@@ -39,7 +39,7 @@ $(document).ready(function () {
   });
 
   $(".course-slick-slider").slick({
-    slidesToShow: 2.5,
+    slidesToShow: 2,
     slidesToScroll: 2,
     arrows: false,
     dots: true,
@@ -49,21 +49,21 @@ $(document).ready(function () {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 2.5,
+          slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1,
           slidesToScroll: 2,
         },
       },
       {
         breakpoint: 567,
         settings: {
-          slidesToShow: 1.2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -71,7 +71,7 @@ $(document).ready(function () {
   });
 
   $(".review-slick-slider").slick({
-    slidesToShow: 3.5,
+    slidesToShow: 3,
     slidesToScroll: 3,
     arrows: false,
     dots: true,
@@ -81,33 +81,40 @@ $(document).ready(function () {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3.5,
+          slidesToShow: 3,
           slidesToScroll: 3,
         },
       },
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 2.5,
+          slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
       {
         breakpoint: 567,
         settings: {
-          slidesToShow: 1.2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
     ],
   });
 
+  $(".payment-slick-slider").slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: true,
+    autoplay: true,
+    speed: 1500,
+  })
+
   const input = document.querySelector("#phone");
   if (input) {
     intlTelInput(input);
   }
-
-  $(".block").matchHeight();
 
   if ($(".counter-value").length) {
     $(".counter-value").each(function () {
@@ -196,14 +203,15 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach((section) => {
     const progress = section.querySelector(".timeline-progress");
     const circles = Array.from(section.querySelectorAll(".timeline-circle"));
-    if (!progress || circles.length === 0) return;
+    const numbers = Array.from(section.querySelectorAll(".timeline-number"));
+    if (!progress || (circles.length === 0 && numbers.length === 0)) return;
 
-    // start state
-    circles.forEach((c) => c.classList.remove("active"));
+    // Reset state
+    [...circles, ...numbers].forEach((el) => el.classList.remove("active"));
     progress.style.height = "0%";
 
     let ticking = false;
-    const threshold = 20; // px before the circle center at which it becomes active
+    const threshold = 20; // px before the element center activates
 
     function update() {
       const sectionRect = section.getBoundingClientRect();
@@ -218,17 +226,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const progressHeight = scrollPercent * sectionRect.height;
       progress.style.height = scrollPercent * 100 + "%";
 
-      // activate circles based on progress position
+      // activate circles
       circles.forEach((circle) => {
         const circleRect = circle.getBoundingClientRect();
-        const circleCenterRelativeToSection =
-          circleRect.top - sectionRect.top + circleRect.height / 2;
+        const circleCenter = circleRect.top - sectionRect.top + circleRect.height / 2;
+        circle.classList.toggle("active", progressHeight + threshold >= circleCenter);
+      });
 
-        if (progressHeight + threshold >= circleCenterRelativeToSection) {
-          circle.classList.add("active");
-        } else {
-          circle.classList.remove("active");
-        }
+      // activate numbers
+      numbers.forEach((number) => {
+        const numberRect = number.getBoundingClientRect();
+        const numberCenter = numberRect.top - sectionRect.top + numberRect.height / 2;
+        number.classList.toggle("active", progressHeight + threshold >= numberCenter);
       });
 
       ticking = false;
@@ -241,14 +250,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // run initially and on events
+    // Run initially and on scroll/resize
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
   });
 });
 
-// Adjust container widths
+
+// Function to Adjust Container width
 document.addEventListener("DOMContentLoaded", function () {
   function adjustWidths() {
     var containers2 = document.querySelectorAll(".container-2");
@@ -256,14 +266,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (mainContainer) {
       containers2.forEach(function (lastContainer) {
-        var rectLastContainer = lastContainer.getBoundingClientRect();
         var rectMainContainer = mainContainer.getBoundingClientRect();
-
-        var spaceToRightLast = window.innerWidth - rectLastContainer.right;
-        var spaceToRightMain = window.innerWidth - rectMainContainer.right;
-        var spaceDifference = spaceToRightLast - spaceToRightMain;
-
-        var newWidth = lastContainer.offsetWidth + spaceDifference;
+        var newWidth = rectMainContainer.left + rectMainContainer.width;
         if (newWidth > 0) {
           lastContainer.style.width = newWidth + "px";
           lastContainer.style.maxWidth = newWidth + "px";
@@ -272,16 +276,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Initial call
+  // Adjust widths initially and on resize or orientation change
   adjustWidths();
-
-  // Watch window resize
   window.addEventListener("resize", adjustWidths);
   window.addEventListener("orientationchange", adjustWidths);
-
-  // Watch for layout or container changes
-  const resizeObserver = new ResizeObserver(adjustWidths);
-  resizeObserver.observe(document.body);
 });
 
 document.querySelectorAll(".player").forEach(function (el) {

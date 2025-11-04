@@ -39,9 +39,95 @@ $(document).ready(function () {
         ]
     })
 
+    $(".course-slick-slider").slick({
+        rtl: true,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        arrows: false,
+        dots: true,
+        autoplay: true,
+        speed: 1500,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 567,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    });
+
+    $(".review-slick-slider").slick({
+        rtl: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        arrows: false,
+        dots: true,
+        autoplay: true,
+        speed: 1500,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                },
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 567,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    });
+
+    $(".payment-slick-slider").slick({
+        rtl: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true,
+        autoplay: true,
+        speed: 1500,
+    })
+
     const input = document.querySelector("#phone");
     if (input) {
         intlTelInput(input);
+    }
+
+
+    if ($(".counter-value").length) {
+        $(".counter-value").each(function () {
+            $(this).counterUp({
+                delay: 10,
+                time: 1000,
+            });
+        });
     }
 });
 
@@ -111,3 +197,108 @@ window.onload = function () {
     window.addEventListener('resize', updateAOSForMobile);
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".timeline-section");
+
+    sections.forEach((section) => {
+        const progress = section.querySelector(".timeline-progress");
+        const circles = Array.from(section.querySelectorAll(".timeline-circle"));
+        const numbers = Array.from(section.querySelectorAll(".timeline-number"));
+        if (!progress || (circles.length === 0 && numbers.length === 0)) return;
+
+        // Reset state
+        [...circles, ...numbers].forEach((el) => el.classList.remove("active"));
+        progress.style.height = "0%";
+
+        let ticking = false;
+        const threshold = 20; // px before the element center activates
+
+        function update() {
+            const sectionRect = section.getBoundingClientRect();
+            const windowH = window.innerHeight;
+
+            // how far we've progressed through the section (0..1)
+            const scrollTop = windowH - sectionRect.top;
+            const sectionSpan = sectionRect.height + windowH;
+            const scrollPercent = Math.min(Math.max(scrollTop / sectionSpan, 0), 1);
+
+            // update progress height
+            const progressHeight = scrollPercent * sectionRect.height;
+            progress.style.height = scrollPercent * 100 + "%";
+
+            // activate circles
+            circles.forEach((circle) => {
+                const circleRect = circle.getBoundingClientRect();
+                const circleCenter = circleRect.top - sectionRect.top + circleRect.height / 2;
+                circle.classList.toggle("active", progressHeight + threshold >= circleCenter);
+            });
+
+            // activate numbers
+            numbers.forEach((number) => {
+                const numberRect = number.getBoundingClientRect();
+                const numberCenter = numberRect.top - sectionRect.top + numberRect.height / 2;
+                number.classList.toggle("active", progressHeight + threshold >= numberCenter);
+            });
+
+            ticking = false;
+        }
+
+        function onScroll() {
+            if (!ticking) {
+                window.requestAnimationFrame(update);
+                ticking = true;
+            }
+        }
+
+        // Run initially and on scroll/resize
+        update();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", update);
+    });
+});
+
+// Function to Adjust Container width
+document.addEventListener("DOMContentLoaded", function () {
+    function adjustWidths() {
+        var containers2 = document.querySelectorAll(".container-2");
+        var mainContainer = document.querySelector(".container");
+
+        if (mainContainer) {
+            containers2.forEach(function (lastContainer) {
+                var rectMainContainer = mainContainer.getBoundingClientRect();
+                var newWidth = rectMainContainer.left + rectMainContainer.width;
+                if (newWidth > 0) {
+                    lastContainer.style.width = newWidth + "px";
+                    lastContainer.style.maxWidth = newWidth + "px";
+                }
+            });
+        }
+    }
+
+    // Adjust widths initially and on resize or orientation change
+    adjustWidths();
+    window.addEventListener("resize", adjustWidths);
+    window.addEventListener("orientationchange", adjustWidths);
+});
+
+document.querySelectorAll(".player").forEach(function (el) {
+    const player = new Plyr(el, {
+        controls: [
+            "play-large",
+            "play",
+            "progress",
+            "current-time",
+            "duration",
+            "mute",
+            "volume",
+            "settings",
+            "fullscreen",
+        ],
+    });
+});
+
+document.querySelectorAll(".player-2").forEach(function (el) {
+    const player = new Plyr(el, {
+        controls: ["play-large"],
+    });
+})
