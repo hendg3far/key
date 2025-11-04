@@ -653,6 +653,47 @@ video {
     max-width: 100%;
 }
 
+.container-2 {
+    max-width: 100% !important;
+}
+
+
+@media (min-width: 1600px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1440px;
+    }
+}
+
+@media (min-width: 1920px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1700px;
+    }
+}
+
+@media (min-width: 2560px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1920px;
+    }
+}
+
 .btn {
     padding-top: 9px;
     padding-bottom: 9px;
