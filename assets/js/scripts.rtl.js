@@ -39,7 +39,10 @@ $(document).ready(function () {
         ]
     })
 
-    $(".course-slick-slider").slick({
+    var $slider1 = $('.course-slick-slider');
+
+    // Initialize Slick
+    $slider1.slick({
         rtl: true,
         slidesToShow: 2,
         slidesToScroll: 2,
@@ -72,7 +75,20 @@ $(document).ready(function () {
         ],
     });
 
-    $(".review-slick-slider").slick({
+    // Pause slider when video plays
+    $('.course-slick-slider video').on('play', function () {
+        $slider1.slick('slickPause');
+    });
+
+    // Resume slider when video is paused
+    $('.course-slick-slider video').on('pause ended', function () {
+        $slider1.slick('slickPlay');
+    });
+
+    var $slider2 = $('.review-slick-slider');
+
+    // Initialize Slick
+    $slider2.slick({
         rtl: true,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -103,6 +119,16 @@ $(document).ready(function () {
                 },
             },
         ],
+    });
+
+    // Pause slider when video plays
+    $('.review-slick-slider video').on('play', function () {
+        $slider2.slick('slickPause');
+    });
+
+    // Resume slider when video is paused
+    $('.review-slick-slider video').on('pause ended', function () {
+        $slider2.slick('slickPlay');
     });
 
     $(".payment-slick-slider").slick({
