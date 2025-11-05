@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/vendor/slick/slick.css">
     <link rel="stylesheet" href="./assets/vendor/aos/aos.css">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link rel="stylesheet" href="./assets/vendor/toastr/toastr.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- <link rel="stylesheet" href="./assets/css/rtl.css"> -->
 </head>
@@ -1084,7 +1085,7 @@
                     Choose from the options below or tell
                     me what you’d like to do!</span>
 
-                <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                <div class="d-flex flex-wrap justify-content-center gap-2 mt-4 mb-4">
                     <div class="border border-color py-1 px-2 rounded-3 bg-transparent">
                         <img src="./assets/media/--icons/image-user-01.svg" alt="image-user-01"> Resume my last course
                     </div>
@@ -1104,37 +1105,61 @@
                         <img src="./assets/media/--icons/stars-03.svg" alt="image-user-01"> More
                     </div>
                 </div>
+
             </div>
 
-            <div class="mt-auto rounded-3 border border-light page-bg">
-                <div class="position-relative rounded-3">
-                    <button class="position-absolute top-0 end-0 btn bg-transparent border-0">
-                        <img src="./assets/media/--icons/microphone-02.svg" alt="microphone-02" loading="lazy">
-                    </button>
-                    <textarea class="form-control rounded-3" rows="6" placeholder="Ask me anything..."></textarea>
-                </div>
-                <div class="d-flex justify-content-between p-2 rounded-bottom-3 ">
+            <div class="mt-auto">
+                <form action="" class="w-100">
+                    <div class="d-flex flex-column gap-2">
+                        <input class="form-control form-control-md" placeholder="Name">
+                        <input class="form-control form-control-md" placeholder="Email">
+                        <div class="rounded-3 border border-light page-bg">
+                            <div class="position-relative rounded-3">
+                                <button class="position-absolute top-0 end-0 btn bg-transparent border-0">
+                                    <img width="25" height="25" class="object-fit-contain"
+                                        src="./assets/media/--icons/microphone-02.svg" alt="microphone-02"
+                                        loading="lazy">
+                                </button>
+                                <textarea class="form-control rounded-3" rows="6"
+                                    placeholder="Ask me anything..."></textarea>
+                            </div>
+                            <div class="d-flex justify-content-between p-2 rounded-bottom-3 ">
 
-                    <button class="d-flex align-items-center gap-1 btn p-0 bg-transparent border-0 dropdown-toggle"
-                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img width="24" height="24" class="object-fit-cover rounded-circle"
-                            src="./assets/media/--avatars/Avatar-2.png" alt="avatar 2" loading="lazy">
-                        <span class="text-color-1">Olivia</span>
-                    </button>
+                                <button
+                                    class="d-flex align-items-center gap-1 btn p-0 bg-transparent border-0 dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img width="24" height="24" class="object-fit-cover rounded-circle"
+                                        src="./assets/media/--avatars/Avatar-2.png" alt="avatar 2" loading="lazy">
+                                    <span class="text-color-1">Olivia</span>
+                                </button>
 
 
-                    <div class="d-flex gap-2">
-                        <button class="btn p-0 bg-transparent"><img src="./assets/media/--icons/italic-square.svg"
-                                alt=""><span class="text-color-1 ms-1">Shortcuts</span></button>
-                        <button class="btn p-0 bg-transparent"><img src="./assets/media/--icons/attachment-01.svg"
-                                alt=""><span class="text-color-1 ms-1">Attach</span></button>
+                                <div class="d-flex gap-2">
+                                    <button class="btn p-0 bg-transparent"><img
+                                            src="./assets/media/--icons/italic-square.svg" alt=""><span
+                                            class="text-color-1 ms-1">Shortcuts</span></button>
+                                    <button class="btn p-0 bg-transparent"><img
+                                            src="./assets/media/--icons/attachment-01.svg" alt=""><span
+                                            class="text-color-1 ms-1">Attach</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-md btn-primary-color px-3">Submit <i
+                                class="fas fa-arrow-right"></i></button>
                     </div>
-                </div>
+                </form>
             </div>
+
+
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+    <!-- <button onclick="showSuccessToast()">Show Success Toast</button>
+    <button onclick="showInfoToast()">Show Info Toast</button>
+    <button onclick="showWarningToast()">Show Warning Toast</button>
+    <button onclick="showErrorToast()">Show Error Toast</button> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./assets/vendor/bootstrap-5.3.3/js/bootstrap.bundle.min.js" defer></script>
     <script src="./assets/vendor/slick/slick.min.js" defer></script>
     <script src="./assets/vendor/aos/aos.js" defer></script>
@@ -1145,8 +1170,40 @@
 
     <!-- CounterUp (newer version compatible with Waypoints 4.x) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" defer></script>
+    <script src="./assets/vendor/toastr/toastr.min.js"></script>
     <script src="./assets/js/scripts.js" defer></script>
     <!-- <script src="./assets/js/scripts.rtl.js" defer></script> -->
+
+    <script type="text/javascript">
+        // Optional: Configure global options for all toasts
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "0",
+            "extendedTimeOut": "0",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+        };
+
+        // Functions to trigger different toast types
+        function showSuccessToast() {
+            toastr.success('Your data has been saved successfully!', 'Success Title');
+        }
+
+        function showInfoToast() {
+            toastr.info('This is an informational message.');
+        }
+
+        function showWarningToast() {
+            toastr.warning('Proceed with caution!', 'Warning Title');
+        }
+
+        function showErrorToast() {
+            toastr.error('An unexpected error occurred.', 'Error Title');
+        }
+    </script>
 
 </body>
 

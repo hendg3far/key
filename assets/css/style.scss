@@ -1652,7 +1652,7 @@ blockquote {
 
 .toast {
     background-color: var(--white-color);
-    max-width: 309px;
+    max-width: 325px;
     border-radius: 12px;
     padding-top: 16px;
     padding-bottom: 16px;
@@ -1665,7 +1665,12 @@ blockquote {
     span {
         color: #414651;
     }
+}
 
+#toast-container .toast {
+    background-color: var(--block-bg-1);
+    box-shadow: none;
+    opacity: 1;
 }
 
 @media(max-width:1199.98px) {
