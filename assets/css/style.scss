@@ -1667,10 +1667,19 @@ blockquote {
     }
 }
 
-#toast-container .toast {
-    background-color: var(--block-bg-1);
+#toast-container .toast,
+.swal2-toast {
+    background: var(--block-bg-1) !important;
     box-shadow: none;
     opacity: 1;
+}
+
+.swal2-toast h2:where(.swal2-title) {
+    color: var(--text-color) !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-html-container) {
+    color: var(--text-color-1) !important;
 }
 
 @media(max-width:1199.98px) {
