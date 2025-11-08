@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="./assets/vendor/slick/slick.css">
     <link rel="stylesheet" href="./assets/vendor/aos/aos.css">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    <link rel="stylesheet" href="./assets/vendor/toastr/toastr.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- <link rel="stylesheet" href="./assets/css/rtl.css"> -->
 </head>
@@ -1158,10 +1157,10 @@
         </div>
     </div>
 
-    <!-- <button onclick="showSuccessToast()">Show Success Toast</button>
-    <button onclick="showInfoToast()">Show Info Toast</button>
-    <button onclick="showWarningToast()">Show Warning Toast</button>
-    <button onclick="showErrorToast()">Show Error Toast</button> -->
+    <!-- <button onclick="showSuccessAlert()">Show Success</button>
+    <button onclick="showInfoAlert()">Show Info</button>
+    <button onclick="showWarningAlert()">Show Warning</button>
+    <button onclick="showErrorAlert()">Show Error</button> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./assets/vendor/bootstrap-5.3.3/js/bootstrap.bundle.min.js" defer></script>
@@ -1174,40 +1173,74 @@
 
     <!-- CounterUp (newer version compatible with Waypoints 4.x) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" defer></script>
+<<<<<<< HEAD
     <script src="./assets/vendor/toastr/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+=======
+    <script src="./assets/vendor/sweetalert/sweetalert2@11.js"></script>
+
+>>>>>>> 87d5548cf25e6e0f06a790f184b2df565ee52443
     <script src="./assets/js/scripts.js" defer></script>
     <!-- <script src="./assets/js/scripts.rtl.js" defer></script> -->
 
+    <!-- Include SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script type="text/javascript">
-        // Optional: Configure global options for all toasts
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true,
-            "positionClass": "toast-top-right",
-            "timeOut": "0",
-            "extendedTimeOut": "0",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
+        // ✅ Optional: Global configuration (you can override per alert)
+        const swalDefaults = {
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            showClass: {
+                popup: 'swal2-noanimation',
+                backdrop: 'swal2-noanimation'
+            },
+            hideClass: {
+                popup: '',
+                backdrop: ''
+            }
         };
 
-        // Functions to trigger different toast types
-        function showSuccessToast() {
-            toastr.success('Your data has been saved successfully!', 'Success Title');
+        // ✅ Functions to trigger different alert types
+
+        function showSuccessAlert() {
+            Swal.fire({
+                ...swalDefaults,
+                icon: 'success',
+                title: 'Success!',
+                text: 'Your data has been saved successfully!'
+            });
         }
 
-        function showInfoToast() {
-            toastr.info('This is an informational message.');
+        function showInfoAlert() {
+            Swal.fire({
+                ...swalDefaults,
+                icon: 'info',
+                title: 'Information',
+                text: 'This is an informational message.'
+            });
         }
 
-        function showWarningToast() {
-            toastr.warning('Proceed with caution!', 'Warning Title');
+        function showWarningAlert() {
+            Swal.fire({
+                ...swalDefaults,
+                icon: 'warning',
+                title: 'Warning!',
+                text: 'Proceed with caution!'
+            });
         }
 
-        function showErrorToast() {
-            toastr.error('An unexpected error occurred.', 'Error Title');
+        function showErrorAlert() {
+            Swal.fire({
+                ...swalDefaults,
+                icon: 'error',
+                title: 'Error!',
+                text: 'An unexpected error occurred.'
+            });
         }
     </script>
     <script>
@@ -1245,6 +1278,7 @@
             ease: "power2.out"
         }, "+=0.3");
     </script>
+
 
 </body>
 
