@@ -151,6 +151,107 @@ $(document).ready(function () {
       });
     });
   }
+
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, Observer);
+
+  const cards = document.querySelectorAll(".block-custom");
+  const container = document.querySelector(".block-cards");
+
+  function setDynamicMinHeight() {
+    let maxHeight = 0;
+    cards.forEach(card => {
+      const cardHeight = card.offsetHeight;
+      if (cardHeight > maxHeight) maxHeight = cardHeight;
+    });
+
+    // خلي الحد الأدنى على الأقل أكبر كارت أو 70vh
+    const minHeight = Math.max(maxHeight, window.innerHeight * 0.7);
+    container.style.minHeight = `${minHeight}px`;
+  }
+
+  function initCardsAnimation() {
+    const time = 0.5;
+    let animating = false;
+
+    gsap.set(cards, {
+      y: (i) => 20 * i,
+      transformOrigin: "center top"
+    });
+
+    const tl = gsap.timeline({ paused: true });
+
+    cards.forEach((card, i) => {
+      tl.add(`card${i + 1}`);
+      tl.to(card, { scale: 0.95 + 0.015 * i, duration: time });
+
+      if (i + 1 < cards.length) {
+        tl.from(cards[i + 1], { y: () => window.innerHeight, duration: time }, "<");
+      }
+    });
+
+    function tweenToLabel(label, isScrollingDown) {
+      if ((!tl.nextLabel() && isScrollingDown) || (!tl.previousLabel() && !isScrollingDown)) {
+        cardsObserver.disable();
+        return;
+      }
+      if (!animating && label) {
+        animating = true;
+        tl.tweenTo(label, { onComplete: () => (animating = false) });
+      }
+    }
+
+    const cardsObserver = Observer.create({
+      wheelSpeed: -1,
+      onDown: () => tweenToLabel(tl.previousLabel(), false),
+      onUp: () => tweenToLabel(tl.nextLabel(), true),
+      tolerance: 10,
+      preventDefault: true,
+      onEnable(self) {
+        const savedScroll = self.scrollY();
+        self._restoreScroll = () => self.scrollY(savedScroll);
+        document.addEventListener("scroll", self._restoreScroll, { passive: false });
+      },
+      onDisable(self) {
+        document.removeEventListener("scroll", self._restoreScroll);
+      }
+    });
+
+    cardsObserver.disable();
+
+    ScrollTrigger.create({
+      trigger: ".block-cards",
+      pin: true,
+      start: "top-=100 top",
+      end: () => `+=${window.innerHeight * (cards.length - 1)}`,
+      scrub: true,
+      onEnter: () => !cardsObserver.isEnabled && cardsObserver.enable(),
+      onEnterBack: () => !cardsObserver.isEnabled && cardsObserver.enable()
+    });
+  }
+
+  // 🧠 التفعيل فقط على الشاشات >= 992px
+  function handleResponsiveAnimation() {
+    if (window.innerWidth >= 576) {
+      setDynamicMinHeight();
+      initCardsAnimation();
+    } else {
+      // لو الموبايل → ألغِ أي تأثيرات GSAP
+      ScrollTrigger.getAll().forEach(st => st.kill());
+      gsap.globalTimeline.clear();
+      gsap.killTweensOf("*");
+
+      cards.forEach(card => {
+        gsap.set(card, { clearProps: "transform,opacity,y,scale" });
+      });
+      container.style.minHeight = "auto";
+    }
+  }
+
+  // أول تشغيل + عند تغيير حجم الشاشة
+  window.addEventListener("load", handleResponsiveAnimation);
+  window.addEventListener("resize", handleResponsiveAnimation);
+
+
 });
 
 // THEMING
@@ -283,7 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", update);
   });
 });
-
 
 // Function to Adjust Container width
 document.addEventListener("DOMContentLoaded", function () {
