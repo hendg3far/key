@@ -38,8 +38,7 @@ $(document).ready(function () {
     ],
   });
 
-
-  var $slider1 = $('.course-slick-slider');
+  var $slider1 = $(".course-slick-slider");
 
   // Initialize Slick
   $slider1.slick({
@@ -75,16 +74,16 @@ $(document).ready(function () {
   });
 
   // Pause slider when video plays
-  $('.course-slick-slider video').on('play', function () {
-    $slider1.slick('slickPause');
+  $(".course-slick-slider video").on("play", function () {
+    $slider1.slick("slickPause");
   });
 
   // Resume slider when video is paused
-  $('.course-slick-slider video').on('pause ended', function () {
-    $slider1.slick('slickPlay');
+  $(".course-slick-slider video").on("pause ended", function () {
+    $slider1.slick("slickPlay");
   });
 
-  var $slider2 = $('.review-slick-slider');
+  var $slider2 = $(".review-slick-slider");
 
   // Initialize Slick
   $slider2.slick({
@@ -120,13 +119,13 @@ $(document).ready(function () {
   });
 
   // Pause slider when video plays
-  $('.review-slick-slider video').on('play', function () {
-    $slider2.slick('slickPause');
+  $(".review-slick-slider video").on("play", function () {
+    $slider2.slick("slickPause");
   });
 
   // Resume slider when video is paused
-  $('.review-slick-slider video').on('pause ended', function () {
-    $slider2.slick('slickPlay');
+  $(".review-slick-slider video").on("pause ended", function () {
+    $slider2.slick("slickPlay");
   });
 
   $(".payment-slick-slider").slick({
@@ -136,7 +135,7 @@ $(document).ready(function () {
     dots: true,
     autoplay: true,
     speed: 1500,
-  })
+  });
 
   const input = document.querySelector("#phone");
   if (input) {
@@ -154,104 +153,68 @@ $(document).ready(function () {
 
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, Observer);
 
-  const cards = document.querySelectorAll(".block-custom");
-  const container = document.querySelector(".block-cards");
+  const scrollSection = document.querySelectorAll(".scroll-section");
 
-  function setDynamicMinHeight() {
-    let maxHeight = 0;
-    cards.forEach(card => {
-      const cardHeight = card.offsetHeight;
-      if (cardHeight > maxHeight) maxHeight = cardHeight;
-    });
+  scrollSection.forEach((section) => {
+    const wrapper = section.querySelector(".scroll-wrapper");
+    const items = wrapper.querySelectorAll(".scroll-block");
 
-    // خلي الحد الأدنى على الأقل أكبر كارت أو 70vh
-    const minHeight = Math.max(maxHeight, window.innerHeight * 0.7);
-    container.style.minHeight = `${minHeight}px`;
-  }
+    // Initialize
+    let direction = null;
 
-  function initCardsAnimation() {
-    const time = 0.5;
-    let animating = false;
-
-    gsap.set(cards, {
-      y: (i) => 20 * i,
-      transformOrigin: "center top"
-    });
-
-    const tl = gsap.timeline({ paused: true });
-
-    cards.forEach((card, i) => {
-      tl.add(`card${i + 1}`);
-      tl.to(card, { scale: 0.95 + 0.015 * i, duration: time });
-
-      if (i + 1 < cards.length) {
-        tl.from(cards[i + 1], { y: () => window.innerHeight, duration: time }, "<");
-      }
-    });
-
-    function tweenToLabel(label, isScrollingDown) {
-      if ((!tl.nextLabel() && isScrollingDown) || (!tl.previousLabel() && !isScrollingDown)) {
-        cardsObserver.disable();
-        return;
-      }
-      if (!animating && label) {
-        animating = true;
-        tl.tweenTo(label, { onComplete: () => (animating = false) });
-      }
+    if (section.classList.contains("vertical-section")) {
+      direction = "vertical";
+    } else if (section.classList.contains("horizontal-section")) {
+      direction = "horizontal";
     }
 
-    const cardsObserver = Observer.create({
-      wheelSpeed: -1,
-      onDown: () => tweenToLabel(tl.previousLabel(), false),
-      onUp: () => tweenToLabel(tl.nextLabel(), true),
-      tolerance: 10,
-      preventDefault: true,
-      onEnable(self) {
-        const savedScroll = self.scrollY();
-        self._restoreScroll = () => self.scrollY(savedScroll);
-        document.addEventListener("scroll", self._restoreScroll, { passive: false });
+    initScroll(section, items, direction);
+  });
+
+  function initScroll(section, items, direction) {
+    // Initial states
+    items.forEach((item, index) => {
+      if (index !== 0) {
+        direction == "horizontal"
+          ? gsap.set(item, { xPercent: 100 })
+          : gsap.set(item, { yPercent: 100 });
+      }
+    });
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        pin: true,
+        start: "top top",
+        end: () => `+=${items.length * 100}%`,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        // markers: true,
       },
-      onDisable(self) {
-        document.removeEventListener("scroll", self._restoreScroll);
-      }
+      defaults: { ease: "none" },
     });
-
-    cardsObserver.disable();
-
-    ScrollTrigger.create({
-      trigger: ".block-cards",
-      pin: true,
-      start: "top-=100 top",
-      end: () => `+=${window.innerHeight * (cards.length - 1)}`,
-      scrub: true,
-      onEnter: () => !cardsObserver.isEnabled && cardsObserver.enable(),
-      onEnterBack: () => !cardsObserver.isEnabled && cardsObserver.enable()
-    });
-  }
-
-  // 🧠 التفعيل فقط على الشاشات >= 992px
-  function handleResponsiveAnimation() {
-    if (window.innerWidth >= 576) {
-      setDynamicMinHeight();
-      initCardsAnimation();
-    } else {
-      // لو الموبايل → ألغِ أي تأثيرات GSAP
-      ScrollTrigger.getAll().forEach(st => st.kill());
-      gsap.globalTimeline.clear();
-      gsap.killTweensOf("*");
-
-      cards.forEach(card => {
-        gsap.set(card, { clearProps: "transform,opacity,y,scale" });
+    items.forEach((item, index) => {
+      timeline.to(item, {
+        scale: 0.9,
       });
-      container.style.minHeight = "auto";
-    }
+
+      direction == "horizontal"
+        ? timeline.to(
+            items[index + 1],
+            {
+              xPercent: 0,
+            },
+            "<"
+          )
+        : timeline.to(
+            items[index + 1],
+            {
+              yPercent: 0,
+            },
+            "<"
+          );
+    });
   }
-
-  // أول تشغيل + عند تغيير حجم الشاشة
-  window.addEventListener("load", handleResponsiveAnimation);
-  window.addEventListener("resize", handleResponsiveAnimation);
-
-
 });
 
 // THEMING
@@ -357,15 +320,23 @@ document.addEventListener("DOMContentLoaded", () => {
       // activate circles
       circles.forEach((circle) => {
         const circleRect = circle.getBoundingClientRect();
-        const circleCenter = circleRect.top - sectionRect.top + circleRect.height / 2;
-        circle.classList.toggle("active", progressHeight + threshold >= circleCenter);
+        const circleCenter =
+          circleRect.top - sectionRect.top + circleRect.height / 2;
+        circle.classList.toggle(
+          "active",
+          progressHeight + threshold >= circleCenter
+        );
       });
 
       // activate numbers
       numbers.forEach((number) => {
         const numberRect = number.getBoundingClientRect();
-        const numberCenter = numberRect.top - sectionRect.top + numberRect.height / 2;
-        number.classList.toggle("active", progressHeight + threshold >= numberCenter);
+        const numberCenter =
+          numberRect.top - sectionRect.top + numberRect.height / 2;
+        number.classList.toggle(
+          "active",
+          progressHeight + threshold >= numberCenter
+        );
       });
 
       ticking = false;
